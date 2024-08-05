@@ -16,11 +16,19 @@ public class NumbersConsumer implements Runnable {
     private final int poisonPill;
     private boolean isConcurent = false;
 
+    /** 
+     * @args BlockingQueue
+     * @args int
+     */
     public NumbersConsumer(BlockingQueue<Integer> queue, int poisonPill) {
         this.queue = queue;
         this.poisonPill = poisonPill;
     }
 
+    /** 
+     * @args Queue
+     * @args int
+     */
     public NumbersConsumer(Queue<Integer> concurrentQueue, int poisonPill) {
         this.concurrentQueue = concurrentQueue;
         this.poisonPill = poisonPill;

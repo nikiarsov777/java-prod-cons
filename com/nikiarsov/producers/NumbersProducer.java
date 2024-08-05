@@ -16,11 +16,19 @@ public class NumbersProducer implements Runnable {
     private boolean isConcurent = false;
     private PrintContext print = new PrintContext(new ConsolePrint());
     
+    /** 
+     * @args BlockingQueue
+     * @args int
+     */
     public NumbersProducer(BlockingQueue<Integer> numbersQueue, int poisonPill) {
         this.numbersQueue = numbersQueue;
         this.poisonPill = poisonPill;
     }
 
+    /** 
+     * @args Queue
+     * @args int
+     */
     public NumbersProducer(Queue<Integer> concurrentQueue, int poisonPill) {
         this.concurrentQueue = concurrentQueue;
         this.poisonPill = poisonPill;
@@ -55,6 +63,9 @@ public class NumbersProducer implements Runnable {
         numbersQueue.put(poisonPill);
      }
 
+     /** 
+     * @throws InterruptedException
+     */
      private void generateNumbersConcurent() throws InterruptedException {
         for (int i = 1; i <= MAX_NUMBERS; i++) {
             // TimeUnit.SECONDS.sleep(1);
